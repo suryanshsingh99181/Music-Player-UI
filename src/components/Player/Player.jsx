@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { TrackContext } from "../../context/TrackContext";
+import "./Player.css";
 import { IoPlayCircle, IoPauseCircleSharp } from "react-icons/io5";
 import {
   TbPlayerTrackNextFilled,
