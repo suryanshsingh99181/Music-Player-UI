@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TrackContext } from "../../context/TrackContext";
 
 const Sidebar = () => {

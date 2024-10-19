@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Player from "./components/Player/Player";
 import { TrackContext } from "./context/TrackContext";
 import "./App.css";

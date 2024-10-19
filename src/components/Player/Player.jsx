@@ -1,12 +1,10 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { TrackContext } from "../../context/TrackContext";
-import "./player.css";
 import { IoPlayCircle, IoPauseCircleSharp } from "react-icons/io5";
 import {
   TbPlayerTrackNextFilled,
   TbPlayerTrackPrevFilled,
 } from "react-icons/tb";
-import { FaPlayCircle } from "react-icons/fa";
 
 const Player = () => {
   const { currentTrack } = useContext(TrackContext);

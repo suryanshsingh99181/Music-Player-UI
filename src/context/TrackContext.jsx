@@ -1,5 +1,3 @@
-// import { useEffect } from "react";
-
 import { createContext, useState, useEffect } from "react";
 
 export const TrackContext = createContext(); //creating the context
