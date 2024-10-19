@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { TrackContext } from "../../context/TrackContext";
 import "./player.css";
+import { IoPlayCircle, IoPauseCircleSharp } from "react-icons/io5";
+import {
+  TbPlayerTrackNextFilled,
+  TbPlayerTrackPrevFilled,
+} from "react-icons/tb";
+import { FaPlayCircle } from "react-icons/fa";
 
 const Player = () => {
   const { currentTrack } = useContext(TrackContext);
@@ -60,8 +66,17 @@ const Player = () => {
   if (!currentTrack) return null;
 
   return (
-    <div className="player-container">
-      <div className="player bg-blue-500">
+    <div className="player-container max-w-[480px] max-h-[692.24px] top-[101px] right-[158px] mx-40 my-10 gap-4 ">
+      {/* Song Information */}
+      <div className="song-info ml-2 mt-2">
+        <h1 className=" font-extrabold text-3xl ">
+          {currentTrack ? currentTrack.name : "No song selected"}
+        </h1>
+        <p className="mt-0 ">
+          {currentTrack ? currentTrack.artist : "Select a song to play"}
+        </p>
+      </div>
+      <div className="player ">
         {/* Album Cover */}
         <img
           className="cover-image"
@@ -74,14 +89,8 @@ const Player = () => {
         />
       </div>
 
-      {/* Song Information */}
-      <div className="song-info">
-        <h3>{currentTrack ? currentTrack.name : "No song selected"}</h3>
-        <p>{currentTrack ? currentTrack.artist : "Select a song to play"}</p>
-      </div>
-
       {/* Progress Bar */}
-      <div className="progress-bar-container">
+      <div className="progress-bar-container my-0">
         <input
           type="range"
           min="0"
@@ -97,12 +106,17 @@ const Player = () => {
       </div>
 
       {/* Player Controls */}
-      <div className="player-controls">
-        <button onClick={togglePlayPause}>
-          {isPlaying ? "Pause" : "Play"} {/* Dynamic button text */}
+      <div className="player-controls flex justify-center pb-4 gap-8 ">
+        <button className="text-2xl">
+          <TbPlayerTrackPrevFilled />
         </button>
-        <button>Next</button>
-        <button>Previous</button>
+        <button onClick={togglePlayPause} className="text-3xl">
+          {isPlaying ? <IoPauseCircleSharp /> : <IoPlayCircle />}{" "}
+          {/* Dynamic button text */}
+        </button>
+        <button className="text-2xl">
+          <TbPlayerTrackNextFilled />
+        </button>
       </div>
 
       {/* Hidden Audio Element */}

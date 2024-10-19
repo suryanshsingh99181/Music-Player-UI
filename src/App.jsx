@@ -1,33 +1,38 @@
-import React, { useState } from "react";
-import Sidebar from "./components/SideBar/SideBar";
+import React, { useState, useContext } from "react";
 import Player from "./components/Player/Player";
-import TrackInfo from "./components/TrackInfo";
+import { TrackContext } from "./context/TrackContext";
 import "./App.css";
-import SideBarTopTrack from "./components/SideBarTopTrack";
+import ToggleInSideBar from "./components/ToggleInSideBar";
+import { ImSpotify } from "react-icons/im";
+import profile from "./assets/suryansh.jpg";
 
 const App = () => {
-  const [topTrackSelected, setTopTrackSelected] = useState(false);
+  const { currentTrack } = useContext(TrackContext);
 
+  const backgroundStyle = currentTrack
+    ? {
+        backgroundImage: `
+          linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+          url(https://cms.samespace.com/assets/${currentTrack.cover})
+        `,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh", // Make sure it covers the full viewport height
+      }
+    : {};
   return (
-    <div className="flex mt-5 justify-evenly">
-      <div className="app-container">
-        <button
-          onClick={() => setTopTrackSelected(false)}
-          className={topTrackSelected ? "" : "active"}
-        >
-          For You
-        </button>
-        <button
-          onClick={() => setTopTrackSelected(true)}
-          className={topTrackSelected ? "active" : ""}
-        >
-          Top Track
-        </button>
-        <div>{topTrackSelected ? <SideBarTopTrack /> : <Sidebar />}</div>
-      </div>
-      <div>
-        <Player />
-      </div>
+    <div className="app-container flex relative" style={backgroundStyle}>
+      <span className="text-white flex text-3xl m-4">
+        <ImSpotify />
+        Spotify
+      </span>
+      <span className=" absolute left-0 bottom-0 text-white m-8">
+        <img src={profile} alt="Profile" className="w-12 h-12 rounded-full" />
+      </span>
+
+      <ToggleInSideBar />
+
+      <Player />
     </div>
   );
 };

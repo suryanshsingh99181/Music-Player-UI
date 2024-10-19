@@ -1,9 +1,17 @@
 /* *{background-color: black;} */
 
-.active {
-    background-color: #4caf50;
-    /* Example active color */
-    color: white;
+
+
+/* .app-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+        
 }
-
-
+ */
