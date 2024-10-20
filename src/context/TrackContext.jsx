@@ -31,9 +31,45 @@ export const TrackProvider = ({ children }) => {
     localStorage.setItem("lastPlayedSong", JSON.stringify(song));
   };
 
+  const handleNextButton = () => {
+    // Check if the current track exists and find the next track based on its ID
+    if (currentTrack) {
+      const nextTrackId = currentTrack.id + 1;
+      const nextTrack = songsList.find((song) => song.id === nextTrackId);
+
+      // If the next track exists, select it. Otherwise, go back to the first track.
+      if (nextTrack) {
+        handleSongSelect(nextTrack);
+      } else {
+        handleSongSelect(songsList[0]); // Loop back to the first song if no next track
+      }
+    }
+  };
+
+  const handlePrevButton = () => {
+    // Check if the current track exists and find the next track based on its ID
+    if (currentTrack) {
+      const prevTrackId = currentTrack.id - 1;
+      const prevTrack = songsList.find((song) => song.id === prevTrackId);
+
+      // If the next track exists, select it. Otherwise, go back to the first track.
+      if (prevTrack) {
+        handleSongSelect(prevTrack);
+      } else {
+        handleSongSelect(songsList[songsList.length - 1]); // Loop back to the first song if no next track
+      }
+    }
+  };
+
   return (
     <TrackContext.Provider
-      value={{ songsList, currentTrack, handleSongSelect }}
+      value={{
+        songsList,
+        currentTrack,
+        handleSongSelect,
+        handleNextButton,
+        handlePrevButton,
+      }}
     >
       {children}
     </TrackContext.Provider>

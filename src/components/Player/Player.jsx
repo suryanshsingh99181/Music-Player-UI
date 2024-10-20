@@ -8,7 +8,13 @@ import {
 } from "react-icons/tb";
 
 const Player = () => {
-  const { currentTrack } = useContext(TrackContext);
+  const {
+    songsList,
+    currentTrack,
+    handleSongSelect,
+    handleNextButton,
+    handlePrevButton,
+  } = useContext(TrackContext);
   // console.log(currentTrack);
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -106,14 +112,14 @@ const Player = () => {
 
       {/* Player Controls */}
       <div className="player-controls flex justify-center pb-4 gap-8 ">
-        <button className="text-2xl">
+        <button className="text-2xl" onClick={() => handlePrevButton()}>
           <TbPlayerTrackPrevFilled />
         </button>
         <button onClick={togglePlayPause} className="text-3xl">
           {isPlaying ? <IoPauseCircleSharp /> : <IoPlayCircle />}{" "}
           {/* Dynamic button text */}
         </button>
-        <button className="text-2xl">
+        <button className="text-2xl" onClick={() => handleNextButton()}>
           <TbPlayerTrackNextFilled />
         </button>
       </div>

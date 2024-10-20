@@ -39,7 +39,7 @@ const Sidebar = () => {
             const isCurrentTrack = currentTrack && currentTrack.id === song.id;
             return (
               <li
-                className={`flex hover:bg-blue-gray-300 text-white p-1${
+                className={`flex hover:bg-blue-gray-300 text-white p-1 cursor-pointer${
                   isCurrentTrack ? " font-bold text-xl" : ""
                 }`}
                 key={song.id}
